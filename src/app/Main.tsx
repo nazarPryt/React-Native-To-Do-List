@@ -1,6 +1,5 @@
 import React from 'react'
 
-import './App.css'
 import { View } from 'react-native'
 
 import { TodolistsList } from '../features/TodolistsList/TodolistsList'
@@ -13,7 +12,7 @@ export function Main({ demo = false }: PropsType) {
   //const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
   return (
-    <div className="App">
+    <View>
       {/*<ErrorSnackbar />*/}
       {/*<AppBar position="static">*/}
       {/*    <Toolbar>*/}
@@ -30,6 +29,6 @@ export function Main({ demo = false }: PropsType) {
       <View>
         <TodolistsList demo={demo} />
       </View>
-    </div>
+    </View>
   )
 }

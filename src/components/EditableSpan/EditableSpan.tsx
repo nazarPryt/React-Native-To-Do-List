@@ -1,6 +1,6 @@
 import React, { ChangeEvent, memo, useState } from 'react'
 
-import { Text } from '@react-native-material/core'
+import { Text, TextInput } from '@react-native-material/core'
 import { View } from 'react-native'
 
 type EditableSpanPropsType = {
@@ -9,7 +9,6 @@ type EditableSpanPropsType = {
 }
 
 export const EditableSpan = memo(function (props: EditableSpanPropsType) {
-  console.log('EditableSpan called')
   let [editMode, setEditMode] = useState(false)
   let [title, setTitle] = useState(props.value)
 
@@ -21,17 +20,21 @@ export const EditableSpan = memo(function (props: EditableSpanPropsType) {
     setEditMode(false)
     props.onChange(title)
   }
-  const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.currentTarget.value)
+  const changeTitle = (text: string) => {
+    setTitle(text)
   }
 
   return editMode ? (
-    <View>
-      <Text>input</Text>
-    </View>
+    <TextInput
+      value={title}
+      onChangeText={changeTitle}
+      autoFocus
+      onBlur={activateViewMode}
+      style={{ width: '70%' }}
+    />
   ) : (
-    //<TextField value={title} onChange={changeTitle} autoFocus onBlur={activateViewMode} />
-    <View>{props.value}</View>
-    //onDoubleClick={activateEditMode}
+    <View>
+      <Text onPress={activateEditMode}>{props.value}</Text>
+    </View>
   )
 })

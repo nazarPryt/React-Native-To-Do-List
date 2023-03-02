@@ -1,8 +1,8 @@
 import React, { memo, useCallback, useEffect } from 'react'
 
-import { Button, Text } from '@react-native-material/core'
+import { AntDesign } from '@expo/vector-icons'
+import { Button, IconButton, Text } from '@react-native-material/core'
 import { View } from 'react-native'
-import { useDispatch } from 'react-redux'
 
 import { TaskStatuses, TaskType } from '../../../api/todolists-api'
 import { useAppDispatch } from '../../../app/hooks'
@@ -27,8 +27,6 @@ type PropsType = {
 }
 
 export const Todolist = memo(function ({ demo = false, ...props }: PropsType) {
-  console.log('Todolist called')
-
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -104,19 +102,19 @@ export const Todolist = memo(function ({ demo = false, ...props }: PropsType) {
           title={'All'}
           variant={props.todolist.filter === 'all' ? 'outlined' : 'text'}
           onPress={onAllClickHandler}
-          color={'default'}
+          color={'red'}
         />
         <Button
           title={'Active'}
           variant={props.todolist.filter === 'active' ? 'outlined' : 'text'}
           onPress={onActiveClickHandler}
-          color={'primary'}
+          color={'red'}
         />
         <Button
           title={'Completed'}
           variant={props.todolist.filter === 'completed' ? 'outlined' : 'text'}
           onPress={onCompletedClickHandler}
-          color={'secondary'}
+          color={'red'}
         />
       </View>
     </View>

@@ -1,7 +1,9 @@
 import React, { ChangeEvent, KeyboardEvent, memo, useState } from 'react'
 
-import { Text } from '@react-native-material/core'
+import { Button, Text, TextInput } from '@react-native-material/core'
 import { View } from 'react-native'
+
+import { useAppSelector } from '../../app/hooks'
 
 type AddItemFormPropsType = {
   addItem: (title: string) => void
@@ -9,8 +11,7 @@ type AddItemFormPropsType = {
 }
 
 export const AddItemForm = memo(function ({ addItem, disabled = false }: AddItemFormPropsType) {
-  console.log('AddItemForm called')
-
+  const loading = useAppSelector(state => state.app.status)
   let [title, setTitle] = useState('')
   let [error, setError] = useState<string | null>(null)
 
@@ -23,8 +24,8 @@ export const AddItemForm = memo(function ({ addItem, disabled = false }: AddItem
     }
   }
 
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.currentTarget.value)
+  const onChangeHandler = (text: string) => {
+    setTitle(text)
   }
 
   const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -38,6 +39,12 @@ export const AddItemForm = memo(function ({ addItem, disabled = false }: AddItem
 
   return (
     <View>
+      <TextInput
+        label="Title"
+        value={title}
+        helperText={error ? error : ''}
+        onChangeText={onChangeHandler}
+      />
       {/*<TextField*/}
       {/*  variant="outlined"*/}
       {/*  disabled={disabled}*/}
@@ -48,11 +55,13 @@ export const AddItemForm = memo(function ({ addItem, disabled = false }: AddItem
       {/*  label="Title"*/}
       {/*  helperText={error}*/}
       {/*/>*/}
-      <Text>input</Text>
-      {/*<IconButton color="primary" onClick={addItemHandler} disabled={disabled}>*/}
-      {/*  <AddBox />*/}
-      {/*</IconButton>*/}
-      <Text>add</Text>
+      <Button
+        disabled={loading === 'loading'}
+        title="Add"
+        // loading={loading === 'loading'}
+        // loadingIndicatorPosition="overlay"
+        onPress={addItemHandler}
+      />
     </View>
   )
 })

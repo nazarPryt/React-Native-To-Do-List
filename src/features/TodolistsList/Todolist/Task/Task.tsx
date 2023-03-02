@@ -1,9 +1,11 @@
 import React, { ChangeEvent, memo, useCallback } from 'react'
 
-import { Text } from '@react-native-material/core'
+import { Button, Text } from '@react-native-material/core'
 import Checkbox from 'expo-checkbox'
+import { View } from 'react-native'
 
 import { TaskStatuses, TaskType } from '../../../../api/todolists-api'
+import { useAppSelector } from '../../../../app/hooks'
 import { EditableSpan } from '../../../../components/EditableSpan/EditableSpan'
 
 type TaskPropsType = {
@@ -14,14 +16,15 @@ type TaskPropsType = {
   removeTask: (taskId: string, todolistId: string) => void
 }
 export const Task = memo((props: TaskPropsType) => {
+  const loading = useAppSelector(state => state.app.status)
   const onClickHandler = useCallback(
     () => props.removeTask(props.task.id, props.todolistId),
     [props.task.id, props.todolistId]
   )
 
   const onChangeHandler = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      let newIsDoneValue = e.currentTarget.checked
+    (value: boolean) => {
+      let newIsDoneValue = value
 
       props.changeTaskStatus(
         props.task.id,
@@ -40,21 +43,20 @@ export const Task = memo((props: TaskPropsType) => {
   )
 
   return (
-    <div
+    <View
       key={props.task.id}
-      className={props.task.status === TaskStatuses.Completed ? 'is-done' : ''}
+      style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+      //className={props.task.status === TaskStatuses.Completed ? 'is-done' : ''}
     >
       <Checkbox
         value={props.task.status === TaskStatuses.Completed}
-        color="primary"
-        // onChange={onChangeHandler}
+        // color="primary"
+        onValueChange={onChangeHandler}
       />
 
       <EditableSpan value={props.task.title} onChange={onTitleChangeHandler} />
-      {/*<IconButton onClick={onClickHandler}>*/}
-      {/*  <Delete />*/}
-      {/*</IconButton>*/}
-      <Text>delet</Text>
-    </div>
+
+      <Button disabled={loading === 'loading'} title="Delete" onPress={onClickHandler} />
+    </View>
   )
 })

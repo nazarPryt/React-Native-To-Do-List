@@ -26,7 +26,7 @@ const initialState: TasksStateType = {}
 
 export const tasksReducer = (
   state: TasksStateType = initialState,
-  action: ActionsType
+  action: taskActionType
 ): TasksStateType => {
   switch (action.type) {
     case 'REMOVE-TASK':
@@ -79,7 +79,7 @@ export const setTasksAC = (tasks: Array<TaskType>, todolistId: string) =>
 
 // thunks
 export const fetchTasksTC =
-  (todolistId: string) => (dispatch: Dispatch<ActionsType | SetAppStatusActionType>) => {
+  (todolistId: string) => (dispatch: Dispatch<taskActionType | SetAppStatusActionType>) => {
     dispatch(setAppStatusAC('loading'))
     todolistsAPI.getTasks(todolistId).then(res => {
       const tasks = res.data.items
@@ -89,7 +89,7 @@ export const fetchTasksTC =
     })
   }
 export const removeTaskTC =
-  (taskId: string, todolistId: string) => (dispatch: Dispatch<ActionsType>) => {
+  (taskId: string, todolistId: string) => (dispatch: Dispatch<taskActionType>) => {
     todolistsAPI.deleteTask(todolistId, taskId).then(res => {
       const action = removeTaskAC(taskId, todolistId)
 
@@ -98,7 +98,7 @@ export const removeTaskTC =
   }
 export const addTaskTC =
   (title: string, todolistId: string) =>
-  (dispatch: Dispatch<ActionsType | SetAppErrorActionType | SetAppStatusActionType>) => {
+  (dispatch: Dispatch<taskActionType | SetAppErrorActionType | SetAppStatusActionType>) => {
     dispatch(setAppStatusAC('loading'))
     todolistsAPI
       .createTask(todolistId, title)
@@ -168,7 +168,7 @@ export type UpdateDomainTaskModelType = {
 export type TasksStateType = {
   [key: string]: Array<TaskType>
 }
-type ActionsType =
+export type taskActionType =
   | ReturnType<typeof removeTaskAC>
   | ReturnType<typeof addTaskAC>
   | ReturnType<typeof updateTaskAC>
@@ -176,4 +176,4 @@ type ActionsType =
   | RemoveTodolistActionType
   | SetTodolistsActionType
   | ReturnType<typeof setTasksAC>
-type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType | SetAppErrorActionType>
+type ThunkDispatch = Dispatch<taskActionType | SetAppStatusActionType | SetAppErrorActionType>

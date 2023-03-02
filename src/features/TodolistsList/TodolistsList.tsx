@@ -1,14 +1,12 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { TaskStatuses } from '../../api/todolists-api'
-import { useAppSelector } from '../../app/hooks'
-import { AppRootStateType } from '../../app/store'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { AddItemForm } from '../../components/AddItemForm/AddItemForm'
 
-import { addTaskTC, removeTaskTC, TasksStateType, updateTaskTC } from './tasks-reducer'
+import { addTaskTC, removeTaskTC, updateTaskTC } from './tasks-reducer'
 import { Todolist } from './Todolist/Todolist'
 import {
   addTodolistTC,
@@ -17,7 +15,6 @@ import {
   fetchTodolistsTC,
   FilterValuesType,
   removeTodolistTC,
-  TodolistDomainType,
 } from './todolists-reducer'
 
 type PropsType = {
@@ -27,7 +24,7 @@ type PropsType = {
 export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
   const todolists = useAppSelector(state => state.todolists)
   const tasks = useAppSelector(state => state.tasks)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (demo) {
