@@ -1,18 +1,23 @@
 import React from 'react'
 
-import { View, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 
+import { LinearProgress } from '../components/LinearProgress/LinearProgress'
 import { TodolistsList } from '../features/TodolistsList/TodolistsList'
+import { globalStyles } from '../globalStyles'
+
+import { useAppSelector } from './hooks'
 
 type PropsType = {
   demo?: boolean
 }
 
 export function Main({ demo = false }: PropsType) {
-  //const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
+  const status = useAppSelector(state => state.app.status)
+  // const dispatch = useAppDispatch()
 
   return (
-    <View>
+    <View style={[globalStyles.center]}>
       {/*<ErrorSnackbar />*/}
       {/*<AppBar position="static">*/}
       {/*    <Toolbar>*/}
@@ -26,6 +31,7 @@ export function Main({ demo = false }: PropsType) {
       {/*    </Toolbar>*/}
       {/* { status === 'loading' &&  <LinearProgress /> }*/}
       {/*</AppBar>*/}
+      {status === 'loading' && <LinearProgress />}
       <View>
         <TodolistsList demo={demo} />
       </View>

@@ -33,7 +33,6 @@ export const Login = () => {
         onSubmit={values => {
           dispatch(loginTC(values))
         }}
-        // onSubmit={value => console.log(value)}
       >
         {({ handleChange, setFieldValue, handleBlur, handleSubmit, values }) => (
           <View style={styles.form}>
