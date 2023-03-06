@@ -3,6 +3,7 @@ import React from 'react'
 import { View } from 'react-native'
 
 import { LinearProgress } from '../components/LinearProgress/LinearProgress'
+import { SnackBar } from '../components/SnackBar/SnackBar'
 import { TodolistsList } from '../features/TodolistsList/TodolistsList'
 import { globalStyles } from '../globalStyles'
 
@@ -18,19 +19,7 @@ export function Main({ demo = false }: PropsType) {
 
   return (
     <View style={[globalStyles.center]}>
-      {/*<ErrorSnackbar />*/}
-      {/*<AppBar position="static">*/}
-      {/*    <Toolbar>*/}
-      {/*        <IconButton edge="start" color="inherit" aria-label="menu">*/}
-      {/*            <Menu/>*/}
-      {/*        </IconButton>*/}
-      {/*        <Typography variant="h6">*/}
-      {/*            News*/}
-      {/*        </Typography>*/}
-      {/*        <Button color="inherit">Login</Button>*/}
-      {/*    </Toolbar>*/}
-      {/* { status === 'loading' &&  <LinearProgress /> }*/}
-      {/*</AppBar>*/}
+      <SnackBar />
       {status === 'loading' && <LinearProgress />}
       <View>
         <TodolistsList demo={demo} />

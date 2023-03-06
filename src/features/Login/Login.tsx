@@ -6,6 +6,7 @@ import { Formik } from 'formik'
 import { StyleSheet, Text, View } from 'react-native'
 
 import { useAppDispatch } from '../../app/hooks'
+import { SnackBar } from '../../components/SnackBar/SnackBar'
 import { globalStyles } from '../../globalStyles'
 
 import { loginTC } from './auth-reducer'
@@ -13,17 +14,9 @@ import { loginTC } from './auth-reducer'
 export const Login = () => {
   const dispatch = useAppDispatch()
 
-  // const dss = (value: any) => {
-  //   Alert.alert('Formik Data', `${value}`, [
-  //     {
-  //       text: 'Cancel',
-  //       style: 'cancel',
-  //     },
-  //   ])
-  // }
-
   return (
     <View style={[globalStyles.center]}>
+      <SnackBar />
       <Formik
         initialValues={{
           email: '' as string,
