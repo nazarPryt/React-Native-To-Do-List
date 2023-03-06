@@ -1,4 +1,4 @@
-import React, { ChangeEvent, memo, useState } from 'react'
+import React, { memo, useState } from 'react'
 
 import { Text, TextInput } from '@react-native-material/core'
 import { View } from 'react-native'

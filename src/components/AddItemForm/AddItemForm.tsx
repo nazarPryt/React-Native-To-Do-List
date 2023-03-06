@@ -28,14 +28,14 @@ export const AddItemForm = memo(function ({ addItem, disabled = false }: AddItem
     setTitle(text)
   }
 
-  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (error !== null) {
-      setError(null)
-    }
-    if (e.charCode === 13) {
-      addItemHandler()
-    }
-  }
+  // const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+  //   if (error !== null) {
+  //     setError(null)
+  //   }
+  //   if (e.charCode === 13) {
+  //     addItemHandler()
+  //   }
+  // }
 
   return (
     <View>
@@ -45,16 +45,6 @@ export const AddItemForm = memo(function ({ addItem, disabled = false }: AddItem
         helperText={error ? error : ''}
         onChangeText={onChangeHandler}
       />
-      {/*<TextField*/}
-      {/*  variant="outlined"*/}
-      {/*  disabled={disabled}*/}
-      {/*  error={!!error}*/}
-      {/*  value={title}*/}
-      {/*  onChange={onChangeHandler}*/}
-      {/*  onKeyPress={onKeyPressHandler}*/}
-      {/*  label="Title"*/}
-      {/*  helperText={error}*/}
-      {/*/>*/}
       <Button
         disabled={loading === 'loading'}
         title="Add"

@@ -2,7 +2,7 @@ import React, { ChangeEvent, memo, useCallback } from 'react'
 
 import { Button, Text } from '@react-native-material/core'
 import Checkbox from 'expo-checkbox'
-import { View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import { TaskStatuses, TaskType } from '../../../../api/todolists-api'
 import { useAppSelector } from '../../../../app/hooks'
@@ -43,14 +43,9 @@ export const Task = memo((props: TaskPropsType) => {
   )
 
   return (
-    <View
-      key={props.task.id}
-      style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-      //className={props.task.status === TaskStatuses.Completed ? 'is-done' : ''}
-    >
+    <View key={props.task.id} style={styles.wrapper}>
       <Checkbox
         value={props.task.status === TaskStatuses.Completed}
-        // color="primary"
         onValueChange={onChangeHandler}
       />
 
@@ -59,4 +54,13 @@ export const Task = memo((props: TaskPropsType) => {
       <Button disabled={loading === 'loading'} title="Delete" onPress={onClickHandler} />
     </View>
   )
+})
+
+const styles = StyleSheet.create({
+  wrapper: {
+    width: '90%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 10,
+  },
 })

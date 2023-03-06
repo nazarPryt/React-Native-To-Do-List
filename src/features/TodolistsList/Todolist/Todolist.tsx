@@ -1,8 +1,8 @@
 import React, { memo, useCallback, useEffect } from 'react'
 
-import { AntDesign } from '@expo/vector-icons'
-import { Button, IconButton, Text } from '@react-native-material/core'
-import { View } from 'react-native'
+import Icon from '@expo/vector-icons/MaterialCommunityIcons'
+import { Button, IconButton, Pressable, Text } from '@react-native-material/core'
+import { StyleSheet, View } from 'react-native'
 
 import { TaskStatuses, TaskType } from '../../../api/todolists-api'
 import { useAppDispatch } from '../../../app/hooks'
@@ -77,15 +77,20 @@ export const Todolist = memo(function ({ demo = false, ...props }: PropsType) {
   }
 
   return (
-    <View>
-      <EditableSpan value={props.todolist.title} onChange={changeTodolistTitle} />
-      <Text>Delete</Text>
-      {/*<IconButton onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>*/}
-      {/*  <Delete />*/}
-      {/*</IconButton>*/}
+    <View style={styles.wrapper}>
+      <View style={styles.header}>
+        <Pressable style={{ width: '70%' }}>
+          <EditableSpan value={props.todolist.title} onChange={changeTodolistTitle} />
+        </Pressable>
+        <IconButton
+          icon={props => <Icon name="delete" {...props} />}
+          onPress={removeTodolist}
+          disabled={props.todolist.entityStatus === 'loading'}
+        />
+      </View>
 
       <AddItemForm addItem={addTask} disabled={props.todolist.entityStatus === 'loading'} />
-      <View>
+      <View style={styles.tasksWrapper}>
         {tasksForTodolist.map(t => (
           <Task
             key={t.id}
@@ -97,26 +102,52 @@ export const Todolist = memo(function ({ demo = false, ...props }: PropsType) {
           />
         ))}
       </View>
-      <View style={{ paddingTop: 10 }}>
+      <View style={styles.filter}>
         <Button
           title={'All'}
-          variant={props.todolist.filter === 'all' ? 'outlined' : 'text'}
+          variant={props.todolist.filter === 'all' ? 'contained' : 'text'}
           onPress={onAllClickHandler}
-          color={'red'}
+          color={'primary'}
         />
         <Button
           title={'Active'}
-          variant={props.todolist.filter === 'active' ? 'outlined' : 'text'}
+          variant={props.todolist.filter === 'active' ? 'contained' : 'text'}
           onPress={onActiveClickHandler}
-          color={'red'}
+          color={'primary'}
         />
         <Button
           title={'Completed'}
-          variant={props.todolist.filter === 'completed' ? 'outlined' : 'text'}
+          variant={props.todolist.filter === 'completed' ? 'contained' : 'text'}
           onPress={onCompletedClickHandler}
-          color={'red'}
+          color={'primary'}
         />
       </View>
     </View>
   )
+})
+
+const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: '#E7EBF0',
+    marginBottom: 30,
+    // shadowColor: '#000000',
+    // shadowOffset: { width: 0, height: 3 },
+    // shadowOpacity: 0.75,
+    // shadowRadius: 17,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  tasksWrapper: {
+    alignItems: 'center',
+  },
+  filter: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
 })

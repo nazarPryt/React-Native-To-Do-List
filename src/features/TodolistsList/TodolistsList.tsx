@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 
 import { TaskStatuses } from '../../api/todolists-api'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
@@ -90,7 +90,7 @@ export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
       <View style={{ padding: 20 }}>
         <AddItemForm addItem={addTodolist} />
       </View>
-      <View>
+      <ScrollView>
         {todolists.map(tl => {
           let allTodolistTasks = tasks[tl.id]
 
@@ -113,7 +113,7 @@ export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
             </View>
           )
         })}
-      </View>
+      </ScrollView>
     </>
   )
 }
