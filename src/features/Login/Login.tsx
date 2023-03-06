@@ -54,47 +54,6 @@ export const Login = () => {
           </View>
         )}
       </Formik>
-
-      {/*<View>*/}
-      {/*  <Form onSubmit={formik.handleSubmit}>*/}
-      {/*    /!*<FormLabel>*!/*/}
-      {/*    /!*  <p>*!/*/}
-      {/*    /!*    To log in get registered{' '}*!/*/}
-      {/*    /!*    <a*!/*/}
-      {/*    /!*      href={'https://social-network.samuraijs.com/'}*!/*/}
-      {/*    /!*      target={'_blank'}*!/*/}
-      {/*    /!*      rel="noreferrer"*!/*/}
-      {/*    /!*    >*!/*/}
-      {/*    /!*      here*!/*/}
-      {/*    /!*    </a>*!/*/}
-      {/*    /!*  </p>*!/*/}
-      {/*    /!*  <p>or use common test account credentials:</p>*!/*/}
-      {/*    /!*  <p> Email: free@samuraijs.com</p>*!/*/}
-      {/*    /!*  <p>Password: free</p>*!/*/}
-      {/*    /!*</FormLabel>*!/*/}
-      {/*    <View>*/}
-      {/*      <TextInput label="Email" {...formik.getFieldProps('email')} />*/}
-      {/*      {formik.errors.email ? <View>{formik.errors.email}</View> : null}*/}
-      {/*      <TextInput*/}
-      {/*        // type="password"*/}
-      {/*        label="Password"*/}
-      {/*        {...formik.getFieldProps('password')}*/}
-      {/*      />*/}
-      {/*      {formik.errors.password ? <View>{formik.errors.password}</View> : null}*/}
-      {/*      /!*<FormControlLabel*!/*/}
-      {/*      /!*  label={'Remember me'}*!/*/}
-      {/*      /!*  control={*!/*/}
-      {/*      <Checkbox {...formik.getFieldProps('rememberMe')} value={formik.values.rememberMe} />*/}
-
-      {/*      <Button*/}
-      {/*        title={'Login'}*/}
-      {/*        variant={'contained'}*/}
-      {/*        color={'primary'}*/}
-      {/*        onPress={submitHandler}*/}
-      {/*      />*/}
-      {/*    </View>*/}
-      {/*  </Form>*/}
-      {/*</View>*/}
     </View>
   )
 }

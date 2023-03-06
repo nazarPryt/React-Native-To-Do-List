@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="221476f8-9368-4607-b180-a5c2b08df889" name="Changes" comment="feat(app): add ActivityIndicator">
-      <change afterPath="$PROJECT_DIR$/src/components/SnackBar/SnackBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Screens/Screen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Screens/Screen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.tsx" afterDir="false" />
+    <list default="true" id="221476f8-9368-4607-b180-a5c2b08df889" name="Changes" comment="feat(app): add Error notification">
       <change beforePath="$PROJECT_DIR$/src/features/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Login/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +89,7 @@
       <workItem from="1677750949224" duration="1627000" />
       <workItem from="1677758236116" duration="18742000" />
       <workItem from="1677854910222" duration="19000" />
-      <workItem from="1678096369595" duration="23774000" />
+      <workItem from="1678096369595" duration="23910000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(app): all code">
       <created>1677765777087</created>
@@ -131,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678134272062</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(app): add Error notification">
+      <created>1678135550604</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678135550604</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +156,8 @@
     <MESSAGE value="feat(app): add navigation &amp; Login page" />
     <MESSAGE value="feat(app): auth works properly" />
     <MESSAGE value="feat(app): add ActivityIndicator" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(app): add ActivityIndicator" />
+    <MESSAGE value="feat(app): add Error notification" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(app): add Error notification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
